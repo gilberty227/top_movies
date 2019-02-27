@@ -2,7 +2,11 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 28
@@ -23,12 +27,26 @@ android {
 }
 
 dependencies {
+    implementation group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.airbnb.android:lottie:2.7.0"
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
+    implementation "com.android.support:recyclerview-v7:28.0.0"
     implementation 'androidx.core:core-ktx:1.1.0-alpha04'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.blankj:utilcode:1.16.4'
+
+    implementation "org.jetbrains.anko:anko-commons:0.10.7"
+    implementation "org.jetbrains.anko:anko-sdk27:0.10.7"
+    implementation "org.jetbrains.anko:anko-sdk27-listeners:0.10.7"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
+
 }

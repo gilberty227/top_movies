@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">TopMovies</string>
+    <string name="app_name">Top Movies</string>
+    <string name="loading_home">CARREGANDO FILMES</string>
+    <string name="search_fail">Nenhum resultado encontrado</string>
+    <string name="without_internet">SEM INTERNET :(</string>
+    <string name="releaseDate">Data de lançamento: %s</string>
+    <string name="releaseDateSimple">Lançamento: %s</string>
+    <string name="genre">Gênero: %s</string>
 </resources>
