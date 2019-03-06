@@ -2,13 +2,12 @@ package br.com.topmovies.home
 
 import android.content.Context
 import br.com.topmovies.data.LoadingFinishListener
-import br.com.topmovies.data.LoadingGenres
-import br.com.topmovies.data.LoadingMovies
 import br.com.topmovies.data.Repository
 import br.com.topmovies.data.models.Movies
+import br.com.topmovies.retrofit.DownloadGenresInfo
+import br.com.topmovies.retrofit.DownloadMoviesInfo
 import com.blankj.utilcode.util.NetworkUtils
 import io.realm.RealmResults
-import org.jetbrains.anko.doAsync
 
 class HomePresenter(private var context: Context) : HomeContract.HomePresenter {
 
@@ -21,10 +20,7 @@ class HomePresenter(private var context: Context) : HomeContract.HomePresenter {
                 viewHome?.showNoInternetScreen()
             } else {
                 viewHome?.showLoadScreen()
-                doAsync {
-                    onStartLoadingGenre()
-                    onStartLoadingMovies()
-                }
+                onStartLoadingGenre()
             }
         } else {
             viewHome?.showMoviesScreen()
@@ -32,15 +28,20 @@ class HomePresenter(private var context: Context) : HomeContract.HomePresenter {
     }
 
     override fun onStartLoadingMovies() {
-        LoadingMovies(context, repository, object : LoadingFinishListener {
+        DownloadMoviesInfo().initDownloadMovies(context, repository, object : LoadingFinishListener {
             override fun finish() {
+                Thread.sleep(8 * 1000)
                 viewHome?.showMoviesScreen()
             }
         })
     }
 
     override fun onStartLoadingGenre() {
-        LoadingGenres(repository)
+        DownloadGenresInfo().initDownloadGenres(repository, object : LoadingFinishListener {
+            override fun finish() {
+                onStartLoadingMovies()
+            }
+        })
     }
 
     override fun getListMovies(): RealmResults<Movies> {

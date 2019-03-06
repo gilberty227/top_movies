@@ -1,5 +1,7 @@
-package br.com.topmovies.tmdb
+package br.com.topmovies.tmdb.interfaces
 
+import br.com.topmovies.tmdb.GenreResults
+import br.com.topmovies.tmdb.MovieResults
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

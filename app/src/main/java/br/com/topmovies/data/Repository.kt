@@ -7,34 +7,32 @@ import io.realm.RealmModel
 import io.realm.RealmObject
 import io.realm.RealmResults
 
-class Repository() {
-
-    private var realm: Realm = getRealm()
-
-    fun getListAllMovies(): RealmResults<Movies> {
-        return realm.where(Movies::class.java).findAll()
-    }
-
-    fun getListAllGenres(): RealmResults<Genres> {
-        return realm.where(Genres::class.java).findAll()
-    }
-
-    fun getListSpecificMovies(int: Int): RealmResults<Movies> {
-        return realm.where(Movies::class.java).equalTo("id", int).findAll()
-    }
+open class Repository {
 
     private fun getRealm(): Realm {
         return Realm.getDefaultInstance()
     }
 
+    fun getListAllMovies(): RealmResults<Movies> {
+        return getRealm().where(Movies::class.java).findAll()
+    }
+
+    fun getListAllGenres(): RealmResults<Genres> {
+        return getRealm().where(Genres::class.java).findAll()
+    }
+
+    fun getListSpecificMovies(int: Int): RealmResults<Movies> {
+        return getRealm().where(Movies::class.java).equalTo("id", int).findAll()
+    }
+
     fun <E : RealmModel> checkIdExists(clazz: Class<E>, id: Int): Boolean {
-        return realm.where(clazz).equalTo("id", id).findAll().size > 0
+        return getRealm().where(clazz).equalTo("id", id).findAll().size > 0
     }
 
     fun saveData(model: RealmObject) {
-        realm.beginTransaction()
-        realm.copyToRealm(model)
-        realm.commitTransaction()
+        getRealm().beginTransaction()
+        getRealm().copyToRealm(model)
+        getRealm().commitTransaction()
     }
 
 

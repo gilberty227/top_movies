@@ -1,52 +1,14 @@
 package br.com.topmovies.tmdb
 
-class MovieResults {
+import br.com.topmovies.tmdb.interfaces.InterfaceClassResults
 
-    private var page: Int = 0
-    private var total_results: Int = 0
-    private var dates: DatesBean? = null
-    private var total_pages: Int = 0
-    private var results: List<ResultsBean>? = null
+class MovieResults : InterfaceClassResults.Results {
 
-    fun getPage(): Int {
-        return page
-    }
-
-    fun setPage(page: Int) {
-        this.page = page
-    }
-
-    fun getTotal_results(): Int {
-        return total_results
-    }
-
-    fun setTotal_results(total_results: Int) {
-        this.total_results = total_results
-    }
-
-    fun getDates(): DatesBean? {
-        return dates
-    }
-
-    fun setDates(dates: DatesBean) {
-        this.dates = dates
-    }
-
-    fun getTotal_pages(): Int {
-        return total_pages
-    }
-
-    fun setTotal_pages(total_pages: Int) {
-        this.total_pages = total_pages
-    }
-
-    fun getResults(): List<ResultsBean>? {
-        return results
-    }
-
-    fun setResults(results: List<ResultsBean>) {
-        this.results = results
-    }
+    var page: Int = 0
+    var total_results: Int = 0
+    var dates: DatesBean? = null
+    var total_pages: Int = 0
+    var results: List<ResultsBean>? = null
 
     class DatesBean {
 
@@ -54,7 +16,7 @@ class MovieResults {
         var minimum: String? = null
     }
 
-    class ResultsBean {
+    class ResultsBean : InterfaceClassResults.ResultBean {
 
         var vote_count: Int = 0
         var id: Int = 0
