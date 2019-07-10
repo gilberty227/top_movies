@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="140dp"
+                android:layout_height="240dp"
+                android:layout_margin="15dp">
+
+    <ImageView
+            android:id="@+id/imageViewMoviePoster"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentTop="true"
+            app:srcCompat="@drawable/ic_star_black_24dp"
+            android:background="@color/md_blue_400"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="vertical"
+            android:background="@color/md_white"
+            android:layout_below="@id/imageViewMoviePoster">
+
+        <TextView
+                android:id="@+id/textViewMovieTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/md_black"
+                android:textSize="12sp"
+                android:lines="1"
+                android:ellipsize="end"
+                tools:text="Creed - Nascido para lutar"/>
+
+        <TextView
+                android:id="@+id/textViewMovieReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:textColor="@color/md_black"
+                android:textSize="10sp"
+                android:lines="1"
+                android:ellipsize="end"
+                tools:text="Lançamento: 10/02/2020"
+                tools:ignore="SmallSp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
